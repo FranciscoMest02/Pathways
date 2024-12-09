@@ -33,6 +33,18 @@ struct ContentView: View {
             }
             .navigationTitle("My Trips")
             .toolbar {
+                NavigationLink(destination: AddingTripView()) {
+                    Image(systemName: "airplane")
+                        .background(.yellow)
+                }
+                
+                Button {
+                    try? modelContext.delete(model: Trip.self)
+                } label: {
+                    Image(systemName: "trash")
+                        .background(.yellow)
+                }
+                
                 Button {
                     try? modelContext.delete(model: Trip.self)
                     
