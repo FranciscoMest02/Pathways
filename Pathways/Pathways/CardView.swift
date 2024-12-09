@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct CardView: View {
+    var title: String
+    
     var body: some View {
         ZStack(alignment: .topLeading) {
             Image("TripImage")
@@ -24,10 +26,11 @@ struct CardView: View {
                 
                 Spacer()
                 
-                Text("My trip to Rome")
+                Text(title)
                     .font(.title.bold())
                     .foregroundStyle(.white)
                     .padding(.bottom, 10)
+                    .multilineTextAlignment(.leading)
                 
                 HStack {
                     Text("45 photos")
@@ -56,5 +59,5 @@ struct CardView: View {
 }
 
 #Preview {
-    CardView()
+    CardView(title: "My first time in Rome")
 }
