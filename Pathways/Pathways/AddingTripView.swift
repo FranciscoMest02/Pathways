@@ -5,11 +5,68 @@
 //  Created by Francisco Mestizo on 09/12/24.
 //
 
+import PhotosUI
 import SwiftUI
 
 struct AddingTripView: View {
+    //Navigation dismiss variable
+    @Environment(\.dismiss) var dismiss
+    
+    //SwiftData
+    @Environment(\.modelContext) var modelContext
+    
+    //PhotosUI vars for logic
+    @State private var selectedItems = [PhotosPickerItem]()
+    @State private var selectedImages = [Image]()
+    
+    //Variables for trip form
+    @State private var title: String = ""
+    @State private var description: String = ""
+    @State private var startDate: Date = Date.now
+    @State private var endDate: Date = Date.now
+    @State private var location: String = ""
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        Form {
+            TextField("Trip name", text: $title)
+            TextField("Description", text: $description)
+            TextField("Location", text: $location)
+            
+            PhotosPicker(selection: $selectedItems, maxSelectionCount: 10, matching: .images) {
+                Image(systemName: "photo")
+            }
+            .onChange(of: selectedItems) {
+                Task {
+                    await loadImages()
+                }
+            }
+            
+            Section {
+                Button("Save trip", action: saveTrip)
+            }
+            
+            ForEach(0..<selectedImages.count, id: \.self) { i in
+                selectedImages[i]
+                    .resizable()
+                    .scaledToFit()
+            }
+        }
+    }
+    
+    //Loads the images received from the PhotosPicker
+    func loadImages() async {
+        for item in selectedItems {
+            if let loadedImage = try? await item.loadTransferable(type: Image.self) {
+                selectedImages.append(loadedImage)
+            }
+        }
+    }
+    
+    //Save the trip to SwiftData with the form information
+    func saveTrip() {
+        let trip = Trip(name: title, country: location, text: description, startDate: startDate, endDate: endDate)
+        modelContext.insert(trip)
+        dismiss()
     }
 }
 
