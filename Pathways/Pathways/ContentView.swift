@@ -48,9 +48,9 @@ struct ContentView: View {
                 Button {
                     try? modelContext.delete(model: Trip.self)
                     
-                    let trip1 = Trip(name: "First Time in Rome", country: "Italy", text: "Description here...", startDate: .now, endDate: .now)
-                    let trip2 = Trip(name: "Turquish Honey Moon", country: "Turkey", text: "Description here...", startDate: .now, endDate: .now)
-                    let trip3 = Trip(name: "Mi first time eating Tacos", country: "Mexico", text: "Descripcion here...", startDate: .now, endDate: .now)
+                    let trip1 = Trip(name: "First Time in Rome", country: "Italy", text: "Description here...", startDate: .now, endDate: .now, images: [])
+                    let trip2 = Trip(name: "Turquish Honey Moon", country: "Turkey", text: "Description here...", startDate: .now, endDate: .now, images: [])
+                    let trip3 = Trip(name: "Mi first time eating Tacos", country: "Mexico", text: "Descripcion here...", startDate: .now, endDate: .now, images: [])
                     
                     modelContext.insert(trip1)
                     modelContext.insert(trip2)

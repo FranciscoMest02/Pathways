@@ -25,6 +25,7 @@ struct AddingTripView: View {
     @State private var startDate: Date = Date.now
     @State private var endDate: Date = Date.now
     @State private var location: String = ""
+    @State private var images: [Data] = [Data]()
     
     var body: some View {
         Form {
@@ -56,15 +57,20 @@ struct AddingTripView: View {
     //Loads the images received from the PhotosPicker
     func loadImages() async {
         for item in selectedItems {
-            if let loadedImage = try? await item.loadTransferable(type: Image.self) {
-                selectedImages.append(loadedImage)
+            if let imageData = try? await item.loadTransferable(type: Data.self) {
+                if let uiImage = UIImage(data: imageData) {
+                    let loadedImage = Image(uiImage: uiImage)
+                    selectedImages.append(loadedImage)
+                    
+                    images.append(imageData)
+                }
             }
         }
     }
     
     //Save the trip to SwiftData with the form information
     func saveTrip() {
-        let trip = Trip(name: title, country: location, text: description, startDate: startDate, endDate: endDate)
+        let trip = Trip(name: title, country: location, text: description, startDate: startDate, endDate: endDate, images: images)
         modelContext.insert(trip)
         dismiss()
     }

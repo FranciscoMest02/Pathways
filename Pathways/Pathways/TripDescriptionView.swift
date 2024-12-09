@@ -35,6 +35,14 @@ struct TripDescriptionView: View {
                     
                     
                 Text(trip.text)
+                
+                ForEach(trip.images, id: \.self) { image in
+                    if let uiImage = UIImage(data: image) {
+                        Image(uiImage: uiImage)
+                            .resizable()
+                            .scaledToFit()
+                    }
+                }
             }
         }
         .ignoresSafeArea()
@@ -43,6 +51,6 @@ struct TripDescriptionView: View {
 
 #Preview {
     NavigationStack{
-        TripDescriptionView(trip: Trip(name: "Trip to Rome", country: "Italy", text: "My favorite trip so far!", startDate: .now, endDate: .now.addingTimeInterval(60 * 60 * 24 * 7)))
+        TripDescriptionView(trip: Trip(name: "Trip to Rome", country: "Italy", text: "My favorite trip so far!", startDate: .now, endDate: .now.addingTimeInterval(60 * 60 * 24 * 7), images: []))
     }
 }
