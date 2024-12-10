@@ -33,6 +33,14 @@ struct AddingTripView: View {
             TextField("Description", text: $description)
             TextField("Location", text: $location)
             
+            DatePicker(selection: $startDate, displayedComponents: .date) {
+                Text("Start day")
+            }
+            
+            DatePicker(selection: $endDate, displayedComponents: .date) {
+                Text("End day")
+            }
+            
             PhotosPicker(selection: $selectedItems, maxSelectionCount: 10, matching: .images) {
                 Image(systemName: "photo")
             }

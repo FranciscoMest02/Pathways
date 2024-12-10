@@ -36,7 +36,7 @@ struct TripDescriptionView: View {
                             .foregroundStyle(.white)
                             .font(.largeTitle.bold())
                         
-                        Text("\(trip.formattedStartDate) - \(trip.formattedStartDate)")
+                        Text("\(trip.formattedStartDate) - \(trip.formattedEndDate)")
                             .foregroundStyle(.white)
                     }
                     .padding(.bottom, 30)

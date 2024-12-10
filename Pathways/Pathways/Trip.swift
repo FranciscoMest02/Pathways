@@ -19,7 +19,12 @@ class Trip {
     var imageCount: Int { images.count }
     
     var formattedStartDate: String {
-        startDate.formatted(date: .abbreviated, time: .omitted)
+        //We verify if the start date is not in the same year as the end, so we dont repeat the year when displayed
+        if Calendar.current.component(.year, from: startDate) == Calendar.current.component(.year, from: endDate) {
+            return startDate.formatted(.dateTime.month(.abbreviated).day(.defaultDigits))
+        } else {
+            return startDate.formatted(.dateTime.year().month(.abbreviated).day(.defaultDigits))
+        }
     }
     var formattedEndDate: String {
         endDate.formatted(date: .abbreviated, time: .omitted)
