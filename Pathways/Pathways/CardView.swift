@@ -11,6 +11,7 @@ struct CardView: View {
     var title: String
     var photosAmount: Int
     var image: Data?
+    var flag: String
     
     var body: some View {
         ZStack(alignment: .topLeading) {
@@ -31,7 +32,7 @@ struct CardView: View {
             LinearGradient(colors: [.black.opacity(0.7), .black.opacity(0.1), .white.opacity(0)], startPoint: .bottom, endPoint: .top)
                 
             VStack(alignment: .leading, spacing: 0) {
-                Text("🇮🇹")
+                Text(flag)
                     .frame(width: 30, height: 30)
                     .background(.white)
                     .clipShape(RoundedRectangle(cornerRadius: 18))
@@ -71,5 +72,5 @@ struct CardView: View {
 }
 
 #Preview {
-    CardView(title: "My first time in Rome", photosAmount: 51)
+    CardView(title: "My first time in Rome", photosAmount: 51, flag: "🇮🇹")
 }

@@ -24,14 +24,13 @@ struct AddingTripView: View {
     @State private var description: String = ""
     @State private var startDate: Date = Date.now
     @State private var endDate: Date = Date.now
-    @State private var location: String = ""
+    @State private var location: (name: String, flag: String) = (name: "", flag: "")
     @State private var images: [Data] = [Data]()
     
     var body: some View {
         Form {
             TextField("Trip name", text: $title)
             TextField("Description", text: $description)
-            TextField("Location", text: $location)
             
             DatePicker(selection: $startDate, displayedComponents: .date) {
                 Text("Start day")
@@ -40,6 +39,8 @@ struct AddingTripView: View {
             DatePicker(selection: $endDate, displayedComponents: .date) {
                 Text("End day")
             }
+            
+            CountrySelectionView(selectedCountry: $location)
             
             PhotosPicker(selection: $selectedItems, maxSelectionCount: 10, matching: .images) {
                 Image(systemName: "photo")
@@ -78,7 +79,7 @@ struct AddingTripView: View {
     
     //Save the trip to SwiftData with the form information
     func saveTrip() {
-        let trip = Trip(name: title, country: location, text: description, startDate: startDate, endDate: endDate, images: images)
+        let trip = Trip(name: title, country: location.name, flag: location.flag, text: description, startDate: startDate, endDate: endDate, images: images)
         modelContext.insert(trip)
         dismiss()
     }

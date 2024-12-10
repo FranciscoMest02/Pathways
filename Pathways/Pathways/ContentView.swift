@@ -22,7 +22,7 @@ struct ContentView: View {
                         HStack(spacing: 0) {
                             ForEach(trips) { trip in
                                 NavigationLink(destination: TripDescriptionView(trip: trip)) {
-                                    CardView(title: trip.name, photosAmount: trip.imageCount, image: trip.images.first)
+                                    CardView(title: trip.name, photosAmount: trip.imageCount, image: trip.images.first, flag: trip.flag)
                                         .padding(.horizontal)
                                 }
                                 
@@ -48,9 +48,9 @@ struct ContentView: View {
                 Button {
                     try? modelContext.delete(model: Trip.self)
                     
-                    let trip1 = Trip(name: "First Time in Rome", country: "Italy", text: "Description here...", startDate: .now, endDate: .now, images: [])
-                    let trip2 = Trip(name: "Turquish Honey Moon", country: "Turkey", text: "Description here...", startDate: .now, endDate: .now, images: [])
-                    let trip3 = Trip(name: "Mi first time eating Tacos", country: "Mexico", text: "Descripcion here...", startDate: .now, endDate: .now, images: [])
+                    let trip1 = Trip(name: "First Time in Rome", country: "Italy", flag: "🇮🇹", text: "Description here...", startDate: .now, endDate: .now, images: [])
+                    let trip2 = Trip(name: "Turquish Honey Moon", country: "Turkey", flag: "🇹🇷", text: "Description here...", startDate: .now, endDate: .now, images: [])
+                    let trip3 = Trip(name: "Mi first time eating Tacos", country: "Mexico", flag: "🇲🇽", text: "Descripcion here...", startDate: .now, endDate: .now, images: [])
                     
                     modelContext.insert(trip1)
                     modelContext.insert(trip2)

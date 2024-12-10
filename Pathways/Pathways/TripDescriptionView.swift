@@ -61,6 +61,6 @@ struct TripDescriptionView: View {
 
 #Preview {
     NavigationStack{
-        TripDescriptionView(trip: Trip(name: "Trip to Rome", country: "Italy", text: "My favorite trip so far!", startDate: .now, endDate: .now.addingTimeInterval(60 * 60 * 24 * 7), images: []))
+        TripDescriptionView(trip: Trip(name: "Trip to Rome", country: "Italy", flag: "🇮🇹", text: "My favorite trip so far!", startDate: .now, endDate: .now.addingTimeInterval(60 * 60 * 24 * 7), images: []))
     }
 }

@@ -12,6 +12,7 @@ import SwiftData
 class Trip {
     var name: String
     var country: String
+    var flag: String = ""
     var text: String
     var startDate: Date
     var endDate: Date
@@ -30,9 +31,10 @@ class Trip {
         endDate.formatted(date: .abbreviated, time: .omitted)
     }
     
-    init(name: String, country: String, text: String, startDate: Date, endDate: Date, images: [Data] = []) {
+    init(name: String, country: String, flag:String, text: String, startDate: Date, endDate: Date, images: [Data] = []) {
         self.name = name
         self.country = country
+        self.flag = flag
         self.text = text
         self.startDate = startDate
         self.endDate = endDate
