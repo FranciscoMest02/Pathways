@@ -13,11 +13,21 @@ struct TripDescriptionView: View {
         ScrollView() {
             VStack(spacing: 0) {
                 ZStack(alignment: .bottom) {
-                    Image("TripImage")
-                        .resizable()
-                        .scaledToFill()
-                        .frame(height: 300)
-                        .clipped()
+                    if trip.imageCount > 0 {
+                        if let uiImage = UIImage(data: trip.images.first!) {
+                            Image(uiImage: uiImage)
+                                .resizable()
+                                .scaledToFill()
+                                .frame(height: 300)
+                                .clipped()
+                        }
+                    } else {
+                        Image("TripImage")
+                            .resizable()
+                            .scaledToFill()
+                            .frame(height: 300)
+                            .clipped()
+                    }
                     
                     LinearGradient(colors: [.black, .black.opacity(0), .black.opacity(0)], startPoint: .bottom, endPoint: .top)
                     

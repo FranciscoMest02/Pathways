@@ -9,12 +9,24 @@ import SwiftUI
 
 struct CardView: View {
     var title: String
+    var photosAmount: Int
+    var image: Data?
     
     var body: some View {
         ZStack(alignment: .topLeading) {
-            Image("TripImage")
-                .resizable()
-                .scaledToFit()
+            if image != nil {
+                if let uiImage = UIImage(data: image!) {
+                    Image(uiImage: uiImage)
+                        .resizable()
+                        .scaledToFill()
+                        .frame(width: 300, height: 400)
+                }
+            } else {
+                Image("TripImage")
+                    .resizable()
+                    .scaledToFill()
+                    .frame(width: 300, height: 400)
+            }
             
             LinearGradient(colors: [.black.opacity(0.7), .black.opacity(0.1), .white.opacity(0)], startPoint: .bottom, endPoint: .top)
                 
@@ -33,7 +45,7 @@ struct CardView: View {
                     .multilineTextAlignment(.leading)
                 
                 HStack {
-                    Text("45 photos")
+                    Text("\(photosAmount) photos")
                         .font(.caption)
                         .padding(.vertical, 6)
                         .padding(.horizontal, 12)
@@ -59,5 +71,5 @@ struct CardView: View {
 }
 
 #Preview {
-    CardView(title: "My first time in Rome")
+    CardView(title: "My first time in Rome", photosAmount: 51)
 }

@@ -16,6 +16,7 @@ class Trip {
     var startDate: Date
     var endDate: Date
     var images: [Data] = [Data]()
+    var imageCount: Int { images.count }
     
     var formattedStartDate: String {
         startDate.formatted(date: .abbreviated, time: .omitted)
