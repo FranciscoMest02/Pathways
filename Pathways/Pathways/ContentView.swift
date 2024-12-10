@@ -22,7 +22,7 @@ struct ContentView: View {
                         HStack(spacing: 0) {
                             ForEach(trips) { trip in
                                 NavigationLink(destination: TripDescriptionView(trip: trip)) {
-                                    CardView(title: trip.name, photosAmount: trip.imageCount, image: trip.images.first, flag: trip.flag)
+                                    CardView(trip: trip)
                                         .padding(.horizontal)
                                 }
                                 

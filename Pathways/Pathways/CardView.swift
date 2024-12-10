@@ -8,15 +8,12 @@
 import SwiftUI
 
 struct CardView: View {
-    var title: String
-    var photosAmount: Int
-    var image: Data?
-    var flag: String
+    var trip: Trip
     
     var body: some View {
         ZStack(alignment: .topLeading) {
-            if image != nil {
-                if let uiImage = UIImage(data: image!) {
+            if trip.images.first != nil {
+                if let uiImage = UIImage(data: trip.images.first!) {
                     Image(uiImage: uiImage)
                         .resizable()
                         .scaledToFill()
@@ -32,21 +29,21 @@ struct CardView: View {
             LinearGradient(colors: [.black.opacity(0.7), .black.opacity(0.1), .white.opacity(0)], startPoint: .bottom, endPoint: .top)
                 
             VStack(alignment: .leading, spacing: 0) {
-                Text(flag)
+                Text(trip.flag)
                     .frame(width: 30, height: 30)
                     .background(.white)
                     .clipShape(RoundedRectangle(cornerRadius: 18))
                 
                 Spacer()
                 
-                Text(title)
+                Text(trip.name)
                     .font(.title.bold())
                     .foregroundStyle(.white)
                     .padding(.bottom, 10)
                     .multilineTextAlignment(.leading)
                 
                 HStack {
-                    Text("\(photosAmount) photos")
+                    Text("\(trip.imageCount) photos")
                         .font(.caption)
                         .padding(.vertical, 6)
                         .padding(.horizontal, 12)
@@ -72,5 +69,7 @@ struct CardView: View {
 }
 
 #Preview {
-    CardView(title: "My first time in Rome", photosAmount: 51, flag: "🇮🇹")
+    let trip1 = Trip(name: "First Time in Rome", country: "Italy", flag: "🇮🇹", text: "Description here...", startDate: .now, endDate: .now, images: [])
+
+    CardView(trip: trip1)
 }
