@@ -8,7 +8,14 @@
 import SwiftUI
 
 struct TripDescriptionView: View {
+    let columns = [
+        GridItem(.flexible(), spacing: 4),
+        GridItem(.flexible(), spacing: 4),
+        GridItem(.flexible())
+    ]
+    
     var trip: Trip
+    
     var body: some View {
         ScrollView() {
             VStack(spacing: 0) {
@@ -42,17 +49,26 @@ struct TripDescriptionView: View {
                     .padding(.bottom, 30)
                     
                 }
-                    
-                    
-                Text(trip.text)
                 
-                ForEach(trip.images, id: \.self) { image in
-                    if let uiImage = UIImage(data: image) {
-                        Image(uiImage: uiImage)
-                            .resizable()
-                            .scaledToFit()
+                    
+                VStack {
+                    Text(trip.text)
+                        .padding(.top, 24)
+                    
+                    LazyVGrid(columns: columns, spacing: 4) {
+                        ForEach(trip.images, id: \.self) { image in
+                            if let uiImage = UIImage(data: image) {
+                                Image(uiImage: uiImage)
+                                    .resizable()
+                                    .frame(height: 120)
+                                    .scaledToFit()
+                                    
+                            }
+                        }
                     }
                 }
+                .padding(.horizontal, 8)
+                
             }
         }
         .ignoresSafeArea()
@@ -61,6 +77,6 @@ struct TripDescriptionView: View {
 
 #Preview {
     NavigationStack{
-        TripDescriptionView(trip: Trip(name: "Trip to Rome", country: "Italy", flag: "🇮🇹", text: "My favorite trip so far!", startDate: .now, endDate: .now.addingTimeInterval(60 * 60 * 24 * 7), images: []))
+        TripDescriptionView(trip: Trip(name: "Trip to Rome", country: "Italy", flag: "🇮🇹", text: "My favorite trip so far!My favorite trip so far!My favorite trip so far!My favorite trip so far!My favorite trip so far!My favorite trip so far!", startDate: .now, endDate: .now.addingTimeInterval(60 * 60 * 24 * 7), images: []))
     }
 }
