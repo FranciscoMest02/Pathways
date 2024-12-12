@@ -34,8 +34,7 @@ struct ContentView: View {
             .navigationTitle("My Trips")
             .toolbar {
                 NavigationLink(destination: AddingTripView()) {
-                    Image(systemName: "airplane")
-                        .background(.yellow)
+                    Image(systemName: "plus")
                 }
                 
                 Button {
@@ -45,19 +44,19 @@ struct ContentView: View {
                         .background(.yellow)
                 }
                 
-                Button {
-                    try? modelContext.delete(model: Trip.self)
-                    
-                    let trip1 = Trip(name: "First Time in Rome", country: "Italy", flag: "🇮🇹", text: "Description here...", startDate: .now, endDate: .now, images: [])
-                    let trip2 = Trip(name: "Turquish Honey Moon", country: "Turkey", flag: "🇹🇷", text: "Description here...", startDate: .now, endDate: .now, images: [])
-                    let trip3 = Trip(name: "Mi first time eating Tacos", country: "Mexico", flag: "🇲🇽", text: "Descripcion here...", startDate: .now, endDate: .now, images: [])
-                    
-                    modelContext.insert(trip1)
-                    modelContext.insert(trip2)
-                    modelContext.insert(trip3)
-                } label: {
-                    Image(systemName: "plus")
-                }
+//                Button {
+//                    try? modelContext.delete(model: Trip.self)
+//                    
+//                    let trip1 = Trip(name: "First Time in Rome", country: "Italy", flag: "🇮🇹", text: "Description here...", startDate: .now, endDate: .now, images: [])
+//                    let trip2 = Trip(name: "Turquish Honey Moon", country: "Turkey", flag: "🇹🇷", text: "Description here...", startDate: .now, endDate: .now, images: [])
+//                    let trip3 = Trip(name: "Mi first time eating Tacos", country: "Mexico", flag: "🇲🇽", text: "Descripcion here...", startDate: .now, endDate: .now, images: [])
+//                    
+//                    modelContext.insert(trip1)
+//                    modelContext.insert(trip2)
+//                    modelContext.insert(trip3)
+//                } label: {
+//                    Image(systemName: "plus")
+//                }
 //                NavigationLink(destination: EmptyView()) {
 //                    Image(systemName: "plus")
 //                }
