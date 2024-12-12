@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import MapKit
 
 struct TripDescriptionView: View {
     let columns = [
@@ -15,6 +16,8 @@ struct TripDescriptionView: View {
     ]
     
     var trip: Trip
+    var position: MapCameraPosition
+    var markerPosition: CLLocationCoordinate2D
     
     var body: some View {
         ScrollView() {
@@ -55,6 +58,12 @@ struct TripDescriptionView: View {
                     Text(trip.text)
                         .padding(.top, 24)
                     
+                    Map(initialPosition: position, interactionModes: []) {
+                        Marker(trip.country, coordinate: markerPosition)
+                    }
+                        .frame(height: 150)
+                        .clipShape(RoundedRectangle(cornerRadius: 20))
+                    
                     LazyVGrid(columns: columns, spacing: 4) {
                         ForEach(trip.images, id: \.self) { image in
                             if let uiImage = UIImage(data: image) {
@@ -72,6 +81,12 @@ struct TripDescriptionView: View {
             }
         }
         .ignoresSafeArea()
+    }
+    
+    init(trip: Trip) {
+        self.trip = trip
+        self.position = MapCameraPosition.region(MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: trip.latitude, longitude: trip.longitude), span: MKCoordinateSpan(latitudeDelta: 20, longitudeDelta: 20)))
+        self.markerPosition = CLLocationCoordinate2D(latitude: trip.latitude, longitude: trip.longitude)
     }
 }
 

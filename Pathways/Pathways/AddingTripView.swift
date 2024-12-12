@@ -7,6 +7,7 @@
 
 import PhotosUI
 import SwiftUI
+import MapKit
 
 struct AddingTripView: View {
     //Navigation dismiss variable
@@ -26,6 +27,8 @@ struct AddingTripView: View {
     @State private var endDate: Date = Date.now
     @State private var location: (name: String, flag: String) = (name: "", flag: "")
     @State private var images: [Data] = [Data]()
+    @State var latitude: Double = 0.0
+    @State var longitude: Double = 0.0
     
     var body: some View {
         Form {
@@ -41,6 +44,13 @@ struct AddingTripView: View {
             }
             
             CountrySelectionView(selectedCountry: $location)
+                .onChange(of: location.name) { oldValue, newValue in
+                    Task {
+                        let coordinates = await getCoordinates(for: newValue)
+                        latitude = coordinates?.latitude ?? 0
+                        longitude = coordinates?.longitude ?? 0
+                    }
+                }
             
             PhotosPicker(selection: $selectedItems, maxSelectionCount: 10, matching: .images) {
                 Image(systemName: "photo")
@@ -77,9 +87,29 @@ struct AddingTripView: View {
         }
     }
     
+    func getCoordinates(for location: String) async -> (latitude: Double, longitude: Double)? {
+        guard !location.isEmpty else { return nil }
+        
+        let geocoder = CLGeocoder()
+        
+        do {
+            let placemarks = try await geocoder.geocodeAddressString(location)
+            if let placemark = placemarks.first, let location = placemark.location {
+                return (latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
+            } else {
+                print("No location found")
+                return nil
+            }
+        } catch {
+            print("Geocoding error: \(error.localizedDescription)")
+            return nil
+        }
+    }
+
+    
     //Save the trip to SwiftData with the form information
     func saveTrip() {
-        let trip = Trip(name: title, country: location.name, flag: location.flag, text: description, startDate: startDate, endDate: endDate, images: images)
+        let trip = Trip(name: title, country: location.name, flag: location.flag, text: description, startDate: startDate, endDate: endDate, images: images, latitude: latitude, longitude: longitude)
         modelContext.insert(trip)
         dismiss()
     }

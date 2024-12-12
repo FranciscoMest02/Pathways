@@ -7,6 +7,7 @@
 
 import Foundation
 import SwiftData
+import MapKit
 
 @Model
 class Trip {
@@ -18,6 +19,8 @@ class Trip {
     var endDate: Date
     var images: [Data] = [Data]()
     var imageCount: Int { images.count }
+    var latitude: Double = 0
+    var longitude: Double = 0
     
     var formattedStartDate: String {
         //We verify if the start date is not in the same year as the end, so we dont repeat the year when displayed
@@ -31,7 +34,7 @@ class Trip {
         endDate.formatted(date: .abbreviated, time: .omitted)
     }
     
-    init(name: String, country: String, flag:String, text: String, startDate: Date, endDate: Date, images: [Data] = []) {
+    init(name: String, country: String, flag:String, text: String, startDate: Date, endDate: Date, images: [Data] = [], latitude: Double = 0.0, longitude: Double = 0.0) {
         self.name = name
         self.country = country
         self.flag = flag
@@ -39,5 +42,7 @@ class Trip {
         self.startDate = startDate
         self.endDate = endDate
         self.images = images
+        self.latitude = latitude
+        self.longitude = longitude
     }
 }
