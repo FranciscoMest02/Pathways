@@ -6,14 +6,84 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		84D47E212D0B644F0006B338 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84D47E202D0B644F0006B338 /* WidgetKit.framework */; };
+		84D47E232D0B644F0006B338 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84D47E222D0B644F0006B338 /* SwiftUI.framework */; };
+		84D47E2E2D0B64500006B338 /* PathwaysWidgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 84D47E1E2D0B644F0006B338 /* PathwaysWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		84D47E2C2D0B64500006B338 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 84C480E42D00ABFD00BE6BC7 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 84D47E1D2D0B644F0006B338;
+			remoteInfo = PathwaysWidgetExtension;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		84D47E2F2D0B64500006B338 /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				84D47E2E2D0B64500006B338 /* PathwaysWidgetExtension.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		84C480EC2D00ABFD00BE6BC7 /* Pathways.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Pathways.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		84D47E1E2D0B644F0006B338 /* PathwaysWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = PathwaysWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		84D47E202D0B644F0006B338 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
+		84D47E222D0B644F0006B338 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
+		84D47E4E2D0B69ED0006B338 /* PathwaysWidgetExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = PathwaysWidgetExtension.entitlements; sourceTree = "<group>"; };
 /* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		84D47E322D0B64500006B338 /* Exceptions for "PathwaysWidget" folder in "PathwaysWidgetExtension" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = 84D47E1D2D0B644F0006B338 /* PathwaysWidgetExtension */;
+		};
+		84D47E522D0B6A4A0006B338 /* Exceptions for "Pathways" folder in "PathwaysWidgetExtension" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Trip.swift,
+			);
+			target = 84D47E1D2D0B644F0006B338 /* PathwaysWidgetExtension */;
+		};
+		84D47E652D0CF3B90006B338 /* Exceptions for "PathwaysWidget" folder in "Pathways" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				UIImageExt.swift,
+			);
+			target = 84C480EB2D00ABFD00BE6BC7 /* Pathways */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		84C480EE2D00ABFD00BE6BC7 /* Pathways */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				84D47E522D0B6A4A0006B338 /* Exceptions for "Pathways" folder in "PathwaysWidgetExtension" target */,
+			);
 			path = Pathways;
+			sourceTree = "<group>";
+		};
+		84D47E242D0B644F0006B338 /* PathwaysWidget */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				84D47E652D0CF3B90006B338 /* Exceptions for "PathwaysWidget" folder in "Pathways" target */,
+				84D47E322D0B64500006B338 /* Exceptions for "PathwaysWidget" folder in "PathwaysWidgetExtension" target */,
+			);
+			path = PathwaysWidget;
 			sourceTree = "<group>";
 		};
 /* End PBXFileSystemSynchronizedRootGroup section */
@@ -26,13 +96,25 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		84D47E1B2D0B644F0006B338 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				84D47E232D0B644F0006B338 /* SwiftUI.framework in Frameworks */,
+				84D47E212D0B644F0006B338 /* WidgetKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
 		84C480E32D00ABFD00BE6BC7 = {
 			isa = PBXGroup;
 			children = (
+				84D47E4E2D0B69ED0006B338 /* PathwaysWidgetExtension.entitlements */,
 				84C480EE2D00ABFD00BE6BC7 /* Pathways */,
+				84D47E242D0B644F0006B338 /* PathwaysWidget */,
+				84D47E1F2D0B644F0006B338 /* Frameworks */,
 				84C480ED2D00ABFD00BE6BC7 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -41,8 +123,18 @@
 			isa = PBXGroup;
 			children = (
 				84C480EC2D00ABFD00BE6BC7 /* Pathways.app */,
+				84D47E1E2D0B644F0006B338 /* PathwaysWidgetExtension.appex */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		84D47E1F2D0B644F0006B338 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				84D47E202D0B644F0006B338 /* WidgetKit.framework */,
+				84D47E222D0B644F0006B338 /* SwiftUI.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -55,10 +147,12 @@
 				84C480E82D00ABFD00BE6BC7 /* Sources */,
 				84C480E92D00ABFD00BE6BC7 /* Frameworks */,
 				84C480EA2D00ABFD00BE6BC7 /* Resources */,
+				84D47E2F2D0B64500006B338 /* Embed Foundation Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				84D47E2D2D0B64500006B338 /* PBXTargetDependency */,
 			);
 			fileSystemSynchronizedGroups = (
 				84C480EE2D00ABFD00BE6BC7 /* Pathways */,
@@ -69,6 +163,28 @@
 			productName = Pathways;
 			productReference = 84C480EC2D00ABFD00BE6BC7 /* Pathways.app */;
 			productType = "com.apple.product-type.application";
+		};
+		84D47E1D2D0B644F0006B338 /* PathwaysWidgetExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 84D47E332D0B64500006B338 /* Build configuration list for PBXNativeTarget "PathwaysWidgetExtension" */;
+			buildPhases = (
+				84D47E1A2D0B644F0006B338 /* Sources */,
+				84D47E1B2D0B644F0006B338 /* Frameworks */,
+				84D47E1C2D0B644F0006B338 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				84D47E242D0B644F0006B338 /* PathwaysWidget */,
+			);
+			name = PathwaysWidgetExtension;
+			packageProductDependencies = (
+			);
+			productName = PathwaysWidgetExtension;
+			productReference = 84D47E1E2D0B644F0006B338 /* PathwaysWidgetExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
 		};
 /* End PBXNativeTarget section */
 
@@ -81,6 +197,9 @@
 				LastUpgradeCheck = 1600;
 				TargetAttributes = {
 					84C480EB2D00ABFD00BE6BC7 = {
+						CreatedOnToolsVersion = 16.0;
+					};
+					84D47E1D2D0B644F0006B338 = {
 						CreatedOnToolsVersion = 16.0;
 					};
 				};
@@ -100,12 +219,20 @@
 			projectRoot = "";
 			targets = (
 				84C480EB2D00ABFD00BE6BC7 /* Pathways */,
+				84D47E1D2D0B644F0006B338 /* PathwaysWidgetExtension */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
 		84C480EA2D00ABFD00BE6BC7 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		84D47E1C2D0B644F0006B338 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -122,7 +249,22 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		84D47E1A2D0B644F0006B338 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		84D47E2D2D0B64500006B338 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 84D47E1D2D0B644F0006B338 /* PathwaysWidgetExtension */;
+			targetProxy = 84D47E2C2D0B64500006B338 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		84C480F82D00ABFE00BE6BC7 /* Debug */ = {
@@ -249,6 +391,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Pathways/Pathways.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Pathways/Preview Content\"";
@@ -278,6 +421,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Pathways/Pathways.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Pathways/Preview Content\"";
@@ -302,6 +446,62 @@
 			};
 			name = Release;
 		};
+		84D47E302D0B64500006B338 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_ENTITLEMENTS = PathwaysWidgetExtension.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 8H6UM9PBYV;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = PathwaysWidget/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = PathwaysWidget;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.panchito.Pathways.PathwaysWidget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		84D47E312D0B64500006B338 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_ENTITLEMENTS = PathwaysWidgetExtension.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 8H6UM9PBYV;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = PathwaysWidget/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = PathwaysWidget;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.panchito.Pathways.PathwaysWidget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -319,6 +519,15 @@
 			buildConfigurations = (
 				84C480FB2D00ABFE00BE6BC7 /* Debug */,
 				84C480FC2D00ABFE00BE6BC7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		84D47E332D0B64500006B338 /* Build configuration list for PBXNativeTarget "PathwaysWidgetExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				84D47E302D0B64500006B338 /* Debug */,
+				84D47E312D0B64500006B338 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
