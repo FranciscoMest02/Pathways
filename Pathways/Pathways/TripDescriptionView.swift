@@ -54,7 +54,7 @@ struct TripDescriptionView: View {
                 }
                 
                     
-                VStack {
+                VStack(alignment: .leading) {
                     Text(trip.text)
                         .padding(.top, 24)
                     
@@ -64,23 +64,27 @@ struct TripDescriptionView: View {
                         .frame(height: 150)
                         .clipShape(RoundedRectangle(cornerRadius: 20))
                     
-                    LazyVGrid(columns: columns, spacing: 4) {
+                    Text("Gallery")
+                        .font(.title2.bold())
+                        .padding(.top, 4)
+                    
+//                    LazyVGrid(columns: columns, spacing: 4) {
                         ForEach(trip.images, id: \.self) { image in
                             if let uiImage = UIImage(data: image) {
                                 Image(uiImage: uiImage)
                                     .resizable()
-                                    .frame(height: 120)
-                                    .scaledToFit()
-                                    
+                                    .scaledToFill()
+                                    .clipShape(RoundedRectangle(cornerRadius: 20))
+//                                    .frame(height: 120)
                             }
                         }
-                    }
+//                    }
                 }
                 .padding(.horizontal, 8)
-                
+                .padding(.bottom, 16)
             }
         }
-        .ignoresSafeArea()
+//        .ignoresSafeArea()
     }
     
     init(trip: Trip) {
