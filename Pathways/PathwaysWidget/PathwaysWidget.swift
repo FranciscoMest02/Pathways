@@ -12,11 +12,11 @@ import UIKit
 
 struct Provider: TimelineProvider {
     func placeholder(in context: Context) -> SimpleEntry {
-        SimpleEntry(date: Date(), name: "This is placeholder", image: Data())
+        return SimpleEntry(date: Date(), name: "Italy", image: Data(), isPlaceholder: true)
     }
     
     func getSnapshot(in context: Context, completion: @escaping (SimpleEntry) -> ()) {
-        let entry = SimpleEntry(date: Date(), name: "This is snapshot", image: Data())
+        let entry = SimpleEntry(date: Date(), name: "Italy", image: Data(), isPlaceholder: true)
         completion(entry)
     }
     
@@ -50,6 +50,7 @@ struct SimpleEntry: TimelineEntry {
     let date: Date
     let name: String
     let image: Data
+    var isPlaceholder = false
 }
 
 struct PathwaysWidgetEntryView : View {
@@ -76,16 +77,24 @@ struct PathwaysWidgetEntryView : View {
             }
         }
         .containerBackground(for: .widget) {
-            if entry.name.count > 0 {
-                if let uiImage = UIImage(data: entry.image) {
-                    Image(uiImage: uiImage)
-                        .resizable()
-                        .scaledToFill()
-                        .frame(width: 360)
-                        .clipped()
+            if(entry.isPlaceholder) {
+                Image(.smallTrip)
+                    .resizable()
+                    .scaledToFill()
+                    .frame(width: 360)
+                    .clipped()
+            } else {
+                if entry.name.count > 0 {
+                    if let uiImage = UIImage(data: entry.image) {
+                        Image(uiImage: uiImage)
+                            .resizable()
+                            .scaledToFill()
+                            .frame(width: 360)
+                            .clipped()
+                    }
+                }  else {
+                    Color.black
                 }
-            }  else {
-                Color.black
             }
         }
     }
