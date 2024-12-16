@@ -66,6 +66,13 @@
 			);
 			target = 84C480EB2D00ABFD00BE6BC7 /* Pathways */;
 		};
+		84D47EF52D1029A90006B338 /* Exceptions for "Shared" folder in "PathwaysWidgetExtension" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				DataModel.swift,
+			);
+			target = 84D47E1D2D0B644F0006B338 /* PathwaysWidgetExtension */;
+		};
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -84,6 +91,14 @@
 				84D47E322D0B64500006B338 /* Exceptions for "PathwaysWidget" folder in "PathwaysWidgetExtension" target */,
 			);
 			path = PathwaysWidget;
+			sourceTree = "<group>";
+		};
+		84D47EEF2D1029700006B338 /* Shared */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				84D47EF52D1029A90006B338 /* Exceptions for "Shared" folder in "PathwaysWidgetExtension" target */,
+			);
+			path = Shared;
 			sourceTree = "<group>";
 		};
 /* End PBXFileSystemSynchronizedRootGroup section */
@@ -111,6 +126,7 @@
 		84C480E32D00ABFD00BE6BC7 = {
 			isa = PBXGroup;
 			children = (
+				84D47EEF2D1029700006B338 /* Shared */,
 				84D47E4E2D0B69ED0006B338 /* PathwaysWidgetExtension.entitlements */,
 				84C480EE2D00ABFD00BE6BC7 /* Pathways */,
 				84D47E242D0B644F0006B338 /* PathwaysWidget */,
@@ -156,6 +172,7 @@
 			);
 			fileSystemSynchronizedGroups = (
 				84C480EE2D00ABFD00BE6BC7 /* Pathways */,
+				84D47EEF2D1029700006B338 /* Shared */,
 			);
 			name = Pathways;
 			packageProductDependencies = (

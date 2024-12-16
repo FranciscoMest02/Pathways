@@ -11,26 +11,34 @@ import SwiftData
 import UIKit
 
 struct Provider: TimelineProvider {
-    @Query var trips: [Trip]
     func placeholder(in context: Context) -> SimpleEntry {
-        SimpleEntry(date: Date(), name: "This is placeholder")
+        SimpleEntry(date: Date(), name: "This is placeholder", image: Data())
     }
     
     func getSnapshot(in context: Context, completion: @escaping (SimpleEntry) -> ()) {
-        let entry = SimpleEntry(date: Date(), name: "This is snapshot")
+        let entry = SimpleEntry(date: Date(), name: "This is snapshot", image: Data())
         completion(entry)
     }
     
     func getTimeline(in context: Context, completion: @escaping (Timeline<Entry>) -> ()) {
         
         var entries: [SimpleEntry] = []
+        let modelContext = ModelContext(DataModel.shared.modelContainer)
+        let fetchDescriptor = FetchDescriptor<Trip>()
         
-        // Generate a timeline consisting of five entries an hour apart, starting from the current date.
-        let currentDate = Date()
-        for hourOffset in 0 ..< 6 {
-            let entryDate = Calendar.current.date(byAdding: .hour, value: hourOffset, to: currentDate)!
-            let entry = SimpleEntry(date: entryDate, name: "Test")
-            entries.append(entry)
+        if let trips = try? modelContext.fetch(fetchDescriptor) {
+            guard let randomTrip = trips.randomElement() else {
+                return
+            }
+            // Generate a timeline consisting of five entries an hour apart, starting from the current date.
+            let currentDate = Date()
+            let size = randomTrip.imageCount
+            for hourOffset in 0 ..< 6 {
+                let randomIndex = Int.random(in: 0..<size)
+                let entryDate = Calendar.current.date(byAdding: .hour, value: hourOffset, to: currentDate)!
+                let entry = SimpleEntry(date: entryDate, name: randomTrip.country, image: randomTrip.images[randomIndex])
+                entries.append(entry)
+            }
         }
         
         let timeline = Timeline(entries: entries, policy: .atEnd)
@@ -41,23 +49,21 @@ struct Provider: TimelineProvider {
 struct SimpleEntry: TimelineEntry {
     let date: Date
     let name: String
+    let image: Data
 }
 
 struct PathwaysWidgetEntryView : View {
     var entry: Provider.Entry
-    @Query var trips: [Trip]
-    
-    let targetSize = CGSize(width: 600, height: 600)
     
     var body: some View {
         VStack {
-            if trips.first?.imageCount ?? 0 > 0 {
+            if entry.name.count > 0 {
                 Spacer()
                 HStack {
                     VStack(alignment: .leading) {
                         Text("Vacations in")
                             .font(.caption)
-                        Text(trips.first?.name ?? "Default")
+                        Text(entry.name)
                             .font(.title.bold())
                     }
                     .foregroundStyle(.white)
@@ -70,8 +76,8 @@ struct PathwaysWidgetEntryView : View {
             }
         }
         .containerBackground(for: .widget) {
-            if trips.first?.imageCount ?? 0 > 0 {
-                if let uiImage = UIImage(data: trips.first!.images.first!) {
+            if entry.name.count > 0 {
+                if let uiImage = UIImage(data: entry.image) {
                     Image(uiImage: uiImage)
                         .resizable()
                         .scaledToFill()
@@ -92,11 +98,8 @@ struct PathwaysWidget: Widget {
         StaticConfiguration(kind: kind, provider: Provider()) { entry in
             if #available(iOS 17.0, *) {
                 PathwaysWidgetEntryView(entry: entry)
-                //                    .containerBackground(.fill.tertiary, for: .widget)
-                    .modelContainer(for: [Trip.self])
             } else {
                 PathwaysWidgetEntryView(entry: entry)
-                    .modelContainer(for: [Trip.self])
             }
         }
         .configurationDisplayName("Pathway widgets")
@@ -108,6 +111,6 @@ struct PathwaysWidget: Widget {
 #Preview(as: .systemMedium) {
     PathwaysWidget()
 } timeline: {
-    SimpleEntry(date: .now, name: "Entry 1")
-    SimpleEntry(date: .now, name: "Entry 2")
+    SimpleEntry(date: .now, name: "Entry 1", image: Data())
+    SimpleEntry(date: .now, name: "Entry 2", image: Data())
 }

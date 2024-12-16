@@ -10,10 +10,12 @@ import SwiftData
 
 @main
 struct PathwaysApp: App {
+    let modelContainer = DataModel.shared.modelContainer
+    
     var body: some Scene {
         WindowGroup {
             ContentView()
         }
-        .modelContainer(for: Trip.self)
+        .modelContainer(modelContainer)
     }
 }
