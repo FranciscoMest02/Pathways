@@ -36,8 +36,10 @@ class Trip {
     }
     
     var totalDays: Int {
-        let components = Calendar.current.dateComponents([.day], from: startDate, to: endDate)
-        return components.day ?? 0
+        let strippedStartDate = Calendar.current.startOfDay(for: startDate)
+        let strippedEndDate = Calendar.current.startOfDay(for: endDate)
+        let components = Calendar.current.dateComponents([.day], from: strippedStartDate, to: strippedEndDate)
+        return (components.day ?? 0) + 1
     }
     
     init(name: String, country: String, flag:String, text: String, startDate: Date, endDate: Date, images: [Data] = [], latitude: Double = 0.0, longitude: Double = 0.0) {
