@@ -15,21 +15,30 @@ struct ContentView: View {
     var body: some View {
         NavigationStack {
             ScrollView {
-                VStack(alignment: .leading) {
-                    Text("Highlighted trips")
-                        .padding(.horizontal)
-                    ScrollView(.horizontal, showsIndicators: false) {
-                        HStack(spacing: 0) {
-                            ForEach(trips) { trip in
-                                NavigationLink(destination: TripDescriptionView(trip: trip)) {
-                                    CardView(trip: trip)
-                                        .padding(.horizontal)
-                                }
-                                
-                            }
+//                VStack(alignment: .leading) {
+//                    Text("Highlighted trips")
+//                        .padding(.horizontal)
+//                    ScrollView(.horizontal, showsIndicators: false) {
+//                        HStack(spacing: 0) {
+//                            ForEach(trips) { trip in
+//                                NavigationLink(destination: TripDescriptionView(trip: trip)) {
+//                                    CardView(trip: trip)
+//                                        .padding(.horizontal)
+//                                }
+//                                
+//                            }
+//                        }
+//                    }
+//                }
+                VStack{
+                    ForEach(trips) { trip in
+                        NavigationLink(destination: TripDescriptionView(trip: trip)) {
+                            CardView(trip: trip)
                         }
+                        
                     }
                 }
+                .padding(.horizontal)
             }
             .navigationTitle("My Trips")
             .toolbar {

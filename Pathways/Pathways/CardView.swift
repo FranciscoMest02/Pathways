@@ -17,13 +17,13 @@ struct CardView: View {
                     Image(uiImage: uiImage)
                         .resizable()
                         .scaledToFill()
-                        .frame(width: 300, height: 400)
+                        .frame(height: 500)
                 }
             } else {
                 Image("TripImage")
                     .resizable()
                     .scaledToFill()
-                    .frame(width: 300, height: 400)
+                    .frame(height: 500)
             }
             
             LinearGradient(colors: [.black.opacity(0.7), .black.opacity(0.1), .white.opacity(0)], startPoint: .bottom, endPoint: .top)
@@ -62,7 +62,7 @@ struct CardView: View {
             .padding(.horizontal, 20)
             
         }
-        .frame(width: 300, height: 400)
+        .frame(height: 500)
         .clipShape(RoundedRectangle(cornerRadius: 20))
         
     }
