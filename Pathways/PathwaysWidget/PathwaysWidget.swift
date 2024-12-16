@@ -62,7 +62,7 @@ struct PathwaysWidgetEntryView : View {
                 Spacer()
                 HStack {
                     VStack(alignment: .leading) {
-                        Text("Vacations in")
+                        Text("Trip to")
                             .font(.caption)
                         Text(entry.name)
                             .font(.title.bold())
