@@ -42,7 +42,7 @@ struct AddingTripView: View {
                 Text("Start day")
             }
             
-            DatePicker(selection: $endDate, displayedComponents: .date) {
+            DatePicker(selection: $endDate, in: startDate...Date.distantFuture, displayedComponents: .date) {
                 Text("End day")
             }
             
