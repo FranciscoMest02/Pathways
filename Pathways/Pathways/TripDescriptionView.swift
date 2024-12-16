@@ -55,14 +55,17 @@ struct TripDescriptionView: View {
                 
                     
                 VStack(alignment: .leading) {
-                    Text(trip.text)
-                        .padding(.top, 24)
+                    if(trip.text.count > 0) {
+                        Text(trip.text)
+                            .padding(.top, 24)
+                    }
                     
                     Map(initialPosition: position, interactionModes: []) {
                         Marker(trip.country, coordinate: markerPosition)
                     }
                         .frame(height: 150)
                         .clipShape(RoundedRectangle(cornerRadius: 20))
+                        .padding(.top, trip.text.count > 0 ? 0 : 24)
                     
                     Text("Gallery")
                         .font(.title2.bold())
