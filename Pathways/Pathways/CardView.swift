@@ -43,14 +43,14 @@ struct CardView: View {
                     .multilineTextAlignment(.leading)
                 
                 HStack {
-                    Text("\(trip.imageCount) photos")
+                    Label("\(trip.imageCount) photos", systemImage: "photo.on.rectangle.angled")
                         .font(.caption)
                         .padding(.vertical, 6)
                         .padding(.horizontal, 12)
                         .background(.white)
                         .clipShape(.capsule)
                     
-                    Text("2 accompanions")
+                    Label("\(trip.totalDays) days", systemImage: "calendar")
                         .font(.caption)
                         .padding(.vertical, 6)
                         .padding(.horizontal, 12)
