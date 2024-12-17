@@ -50,7 +50,7 @@ struct CardView: View {
                         .background(.white)
                         .clipShape(.capsule)
                     
-                    Label("\(trip.totalDays) days", systemImage: "calendar")
+                    Label(trip.totalDays == 1 ? "1 day" : "\(trip.totalDays) days", systemImage: "calendar")
                         .font(.caption)
                         .padding(.vertical, 6)
                         .padding(.horizontal, 12)
@@ -64,7 +64,8 @@ struct CardView: View {
         }
         .frame(height: 500)
         .clipShape(RoundedRectangle(cornerRadius: 20))
-        
+        .accessibilityElement(children: .ignore)
+        .accessibilityLabel("\(trip.flag)")
     }
 }
 

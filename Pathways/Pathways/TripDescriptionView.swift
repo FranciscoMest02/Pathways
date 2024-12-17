@@ -50,6 +50,9 @@ struct TripDescriptionView: View {
                             .foregroundStyle(.white)
                     }
                     .padding(.bottom, 30)
+                    .accessibilityElement()
+                    .accessibilityLabel("From \(trip.formattedStartDate) to \(trip.formattedEndDate)")
+                
                     
                 }
                 
