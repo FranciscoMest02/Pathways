@@ -15,7 +15,7 @@ Pathways is an iOS app that helps people remeber all of their trips. By storing 
 - 📸 Widget support
 
 ## Installation
-1. Clone this repository: `git clone <https://github.com/your-username/tasktracker.git`>
+1. Clone this repository: `git clone <https://github.com/FranciscoMest02/Pathways.git>`
 2. Open the project in Xcode.
 3. Run the app on a simulator or connected device.
 
