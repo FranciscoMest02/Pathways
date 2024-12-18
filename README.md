@@ -1,7 +1,7 @@
 # Pathways ✈️
-<img src="https://github.com/user-attachments/assets/02fb3f6f-76b0-4aec-870e-a65a23da0523" width="200" height="200" />
-
 Pathways is an iOS app that helps people remeber all of their trips. By storing photos and showing them on a widget people can relive teir trips.
+
+<img src="https://github.com/user-attachments/assets/02fb3f6f-76b0-4aec-870e-a65a23da0523" width="200" height="200" />
 
 ## App preview
 
