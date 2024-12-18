@@ -46,12 +46,12 @@ struct ContentView: View {
                     Image(systemName: "plus")
                 }
                 
-                Button {
-                    try? modelContext.delete(model: Trip.self)
-                } label: {
-                    Image(systemName: "trash")
-                        .background(.yellow)
-                }
+//                Button {
+//                    try? modelContext.delete(model: Trip.self)
+//                } label: {
+//                    Image(systemName: "trash")
+//                        .background(.yellow)
+//                }
                 
 //                Button {
 //                    try? modelContext.delete(model: Trip.self)
