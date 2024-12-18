@@ -24,7 +24,9 @@ struct Provider: TimelineProvider {
         
         var entries: [SimpleEntry] = []
         let modelContext = ModelContext(DataModel.shared.modelContainer)
-        let fetchDescriptor = FetchDescriptor<Trip>()
+        var fetchDescriptor = FetchDescriptor<Trip>()
+        fetchDescriptor.propertiesToFetch = [\.name, \.country]
+        fetchDescriptor.fetchLimit = 2
         
         if let trips = try? modelContext.fetch(fetchDescriptor) {
             guard let randomTrip = trips.randomElement() else {
